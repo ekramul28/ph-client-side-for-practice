@@ -3,21 +3,48 @@ import {
   UserOutlined,
   VideoCameraOutlined,
 } from "@ant-design/icons";
-import { Flex, Layout, Menu } from "antd";
-import { createElement } from "react";
+import { Flex, Layout, Menu, MenuProps } from "antd";
+import { Children, createElement } from "react";
+import { NavLink, Outlet } from "react-router-dom";
 
 const { Header, Content, Footer, Sider } = Layout;
 
-const items = [
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-  UserOutlined,
-].map((icon, index) => ({
-  key: String(index + 1),
-  icon: createElement(icon),
-  label: `nav ${index + 1}`,
-}));
+// const items = [
+//   UserOutlined,
+//   VideoCameraOutlined,
+//   UploadOutlined,
+//   UserOutlined,
+// ].map((icon, index) => ({
+//   key: String(index + 1),
+//   icon: createElement(icon),
+//   label: `nav ${index + 1}`,
+// }));
+
+const items: MenuProps["items"] = [
+  {
+    key: "1",
+    label: <NavLink to="/admin">Dashboard</NavLink>,
+  },
+
+  {
+    key: "8",
+    label: "User Management",
+    children: [
+      {
+        key: "3",
+        label: "Create-Admin",
+      },
+      {
+        key: "4",
+        label: "Create-Student",
+      },
+      {
+        key: "4",
+        label: "Create-faculty",
+      },
+    ],
+  },
+];
 const MainLayout = () => {
   return (
     <Layout style={{ height: "100vh" }}>
@@ -59,7 +86,7 @@ const MainLayout = () => {
               minHeight: 360,
             }}
           >
-            content
+            <Outlet></Outlet>
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
