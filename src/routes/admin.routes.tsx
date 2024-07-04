@@ -24,7 +24,7 @@ import { Children, ReactNode } from "react";
 //   },
 // ];
 
-const adminPaths2 = [
+export const adminPaths = [
   {
     name: "Dashboard",
     path: "dashboard",
@@ -52,29 +52,29 @@ const adminPaths2 = [
   },
 ];
 
-type TRoute = {
-  path: string;
-  element: ReactNode;
-};
+// type TRoute = {
+//   path: string;
+//   element: ReactNode;
+// };
 
-export const adminRoutes = adminPaths2.reduce((acc: TRoute[], items) => {
-  if (items.path && items.element) {
-    acc.push({
-      path: items.path,
-      element: items.element,
-    });
-  }
-  if (items.children) {
-    items.children.forEach((child) => {
-      acc.push({
-        path: child.path,
-        element: child.element,
-      });
-    });
-  }
+// export const adminRoutes = adminPaths.reduce((acc: TRoute[], items) => {
+//   if (items.path && items.element) {
+//     acc.push({
+//       path: items.path,
+//       element: items.element,
+//     });
+//   }
+//   if (items.children) {
+//     items.children.forEach((child) => {
+//       acc.push({
+//         path: child.path,
+//         element: child.element,
+//       });
+//     });
+//   }
 
-  return acc;
-}, []);
+//   return acc;
+// }, []);
 
 type TSideRoute = {
   key: string;
@@ -82,7 +82,7 @@ type TSideRoute = {
   children?: TSideRoute[];
 };
 
-export const adminSidebarItems = adminPaths2.reduce(
+export const adminSidebarItems = adminPaths.reduce(
   (acc: TSideRoute[], items) => {
     if (items.name && items.path) {
       acc.push({
