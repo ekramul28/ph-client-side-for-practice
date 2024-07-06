@@ -8,6 +8,7 @@ import { Navigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children }: { children: ReactNode }) => {
   const token = useAppSelector(userCurrentToken);
+  console.log(token);
   const user = useAppSelector(userUser);
   if (!token) {
     return <Navigate to="/login" replace={true}></Navigate>;
